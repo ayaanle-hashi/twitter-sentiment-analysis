@@ -13,10 +13,10 @@ positive = 0
 negative = 0
 neutral =  0
 
-for tweet in tweepy.Cursor(api.search,q=search,
+for tweet in tweepy.Cursor(api.search,q=search +" -filter:retweets",
                             lang="en").items(no_of_tweets):
         sentiment = sentiment_scores(tweet.text)
-        
+
         positive += sentiment[0]
         negative += sentiment[1]
         neutral  += sentiment[2]
