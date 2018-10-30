@@ -25,19 +25,19 @@ positive_percentage = int(positive/(negative+neutral+positive) * 100)
 negative_percentage = int(negative/(negative+neutral+positive) * 100)
 neutral_percentage =  int(neutral/(negative+neutral+positive) * 100)
 
-if positive > negative and positive > neutral:
+if positive > negative and positive > neutral and (positive - negative) > 10 :
         print ("With" + ' {} '.format(str(no_of_tweets)) + "Tweets analysed " + search + " has a strong positive sentiment on Twitter \n")
         print('{}'.format(positive_percentage) + "% " + "of these tweets are postiive")
 
-elif negative > positive and negative > neutral:
+elif negative > positive and negative > neutral and (negative - positive) > 10:
         print("With" + ' {} '.format(str(no_of_tweets)) + "Tweets analysed " + search + " has a strong negative sentiment on Twitter \n")
         print('{}'.format(negative_percentage) + "% " + "of these tweets are negative")
 
-elif neutral > negative and positive > negative:
+elif neutral > negative and positive > negative or positive >= neutral and positive > negative:
         print("With" + ' {} '.format(str(no_of_tweets)) + "Tweets analysed " + search + " has a weak positive sentiment on Twitter \n")
         print('{}'.format(positive_percentage) + "% " + "of these tweets are postiive")
 
-elif neutral > positive and negative > positive:
+elif neutral > positive and negative > positive or negative >= neutral and negative > positive:
         print("With" + ' {} '.format(str(no_of_tweets)) + "Tweets analysed " + search + " has a weak negative sentiment on Twitter \n")
         print('{}'.format(negative_percentage) + "% " + "of these tweets are negative")
 
