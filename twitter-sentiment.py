@@ -11,7 +11,7 @@ no_of_tweets=int(input("How many tweets should be analysed?: "))
 
 positive = 0
 negative = 0
-neutral =  0
+neutral  = 0
 
 for tweet in tweepy.Cursor(api.search,q=search +" -filter:retweets",
                             lang="en").items(no_of_tweets):
@@ -25,11 +25,13 @@ positive_percentage = int(positive/(negative+neutral+positive) * 100)
 negative_percentage = int(negative/(negative+neutral+positive) * 100)
 neutral_percentage =  int(neutral/(negative+neutral+positive) * 100)
 
-if positive > negative and positive > neutral and (positive - negative) > 10 :
+print(positive,negative,neutral)
+
+if positive > negative and positive > neutral and (positive - negative) > 10 and (positive - neutral) > 15:
         print ("With" + ' {} '.format(str(no_of_tweets)) + "Tweets analysed " + search + " has a strong positive sentiment on Twitter \n")
         print('{}'.format(positive_percentage) + "% " + "of these tweets are postiive")
 
-elif negative > positive and negative > neutral and (negative - positive) > 10:
+elif negative > positive and negative > neutral and (negative - positive) > 10 and (negative - neutral) > 15:
         print("With" + ' {} '.format(str(no_of_tweets)) + "Tweets analysed " + search + " has a strong negative sentiment on Twitter \n")
         print('{}'.format(negative_percentage) + "% " + "of these tweets are negative")
 
